@@ -28,7 +28,7 @@ jobs:
         run: mkdir target
 
       - name: Copy files to target directory
-        run: mv -r ./* ./target/ # Co
+        run: mv data.js ./target/ # Co
       - uses: actions/upload-artifact@v4
         with:
           name: target
