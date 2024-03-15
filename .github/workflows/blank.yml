@@ -26,5 +26,6 @@ jobs:
         with:
           name: Archive README.md
           github-token: ${{ secrets.ARTIFACT_ACCESS }} # token with actions:read permissions on target repo
+          path: ./README.md
       # ls -r artifacts
       - run: ls -R
