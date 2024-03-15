@@ -14,7 +14,7 @@ on:
 # A workflow run is made up of one or more jobs that can run sequentially or in parallel
 jobs:
   # This workflow contains a single job called "build"
-  build:
+  get-main-branch:
     # The type of runner that the job will run on
     runs-on: ubuntu-latest
 
@@ -24,11 +24,27 @@ jobs:
       - uses: actions/checkout@v3
         with:
           ref: main
-      - run: cat data.js
-      - uses: actions/download-artifact@v4
+      - name: Create target directory
+        run: mkdir -p ./target
+
+      - name: Copy files to target directory
+        run: cp -r * ./target # Co
+      - uses: actions/upload-artifact@v4
         with:
-          github-token: ${{ secrets.ARTIFACT_ACCESS }} # token with actions:read permissions on target repo
-          # name: README.md
-      # ls -r artifacts
-      - run: ls -R
-      - run: cat README.md
+          name: target
+          path: ./target/
+
+  cat-from-main:
+    # The type of runner that the job will run on
+    runs-on: ubuntu-latest
+
+    # Steps represent a sequence of tasks that will be executed as part of the job
+    steps:
+      # Checks-out your repository under $GITHUB_WORKSPACE, so your job can access it
+      - uses: actions/checkout@v3
+      - uses: actions/download-artifact@v2
+        with:
+          name: target
+          path: ./target
+      - run: cat data.js
+      - run: cat ./target/data.js
