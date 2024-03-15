@@ -28,3 +28,4 @@ jobs:
           # name: README.md
       # ls -r artifacts
       - run: ls -R
+      - run: cat README.md
