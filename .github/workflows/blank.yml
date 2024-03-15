@@ -1,13 +1,9 @@
 # This is a basic workflow to help you get started with Actions
-
 name: CI
 
-# Controls when the workflow will run
 on:
   # Triggers the workflow on push or pull request events but only for the "main" branch
   push:
-    branches: ["main"]
-  pull_request:
     branches: ["main"]
 
   # Allows you to run this workflow manually from the Actions tab
@@ -25,11 +21,18 @@ jobs:
       # Checks-out your repository under $GITHUB_WORKSPACE, so your job can access it
       - uses: actions/checkout@v3
       - name: Checkout
-        uses: actions/checkout@v2
+        uses: actions/checkout@v
       - name: Create README.md
         run: echo "Hello, World!" > README.md
-      - name: Archive README.md
-        uses: actions/upload-artifact@v2
+      - name: create file json
+        run: echo "const a = toto;" > data.js
+      - name: upload readme
+        uses: actions/upload-artifact@v4
         with:
           name: README
           path: README.md
+      - name: upload js
+        uses: actions/upload-artifact@v4
+        with:
+          name: js
+          path: data.js
