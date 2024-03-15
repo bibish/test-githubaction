@@ -25,6 +25,6 @@ jobs:
       - uses: actions/download-artifact@v4
         with:
           github-token: ${{ secrets.ARTIFACT_ACCESS }} # token with actions:read permissions on target repo
-          name: README.md
+          # name: README.md
       # ls -r artifacts
       - run: ls -R
