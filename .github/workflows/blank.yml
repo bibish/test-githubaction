@@ -20,17 +20,20 @@ jobs:
     steps:
       # Checks-out your repository under $GITHUB_WORKSPACE, so your job can access it
       - uses: actions/checkout@v3
-      - name: Create README.md
-        run: echo "Hello, World!" > README.md
-      - name: create file json
-        run: echo "const a = toto;" > data.js
-      - name: upload readme
-        uses: actions/upload-artifact@v4
         with:
-          name: README
-          path: README.md
-      - name: upload js
-        uses: actions/upload-artifact@v4
-        with:
-          name: js
-          path: data.js
+          ref: main
+      - run: ls -R
+      # - name: Create README.md
+      #   run: echo "Hello, World!" > README.md
+      # - name: create file json
+      #   run: echo "const a = toto;" > data.js
+      # - name: upload readme
+      #   uses: actions/upload-artifact@v4
+      #   with:
+      #     name: README
+      #     path: README.md
+      # - name: upload js
+      #   uses: actions/upload-artifact@v4
+      #   with:
+      #     name: js
+      #     path: data.js
