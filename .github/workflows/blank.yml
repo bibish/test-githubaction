@@ -43,8 +43,4 @@ jobs:
       # Checks-out your repository under $GITHUB_WORKSPACE, so your job can access it
       - uses: actions/checkout@v3
       - uses: actions/download-artifact@v4
-        with:
-          name: target
-          path: ./target
-      - run: cat data.js
-      - run: cat ./target/data.js
+      - run: ls -R
