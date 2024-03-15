@@ -25,10 +25,10 @@ jobs:
         with:
           ref: main
       - name: Create target directory
-        run: mkdir -p ./target
+        run: mkdir target
 
       - name: Copy files to target directory
-        run: cp -r * ./target # Co
+        run: mv -r ./* ./target/ # Co
       - uses: actions/upload-artifact@v4
         with:
           name: target
