@@ -22,7 +22,4 @@ jobs:
 
       - name: Fetch commit messages
         run: |
-          commits=$(curl -H "Authorization: token ${{ secrets.GITHUB_TOKEN }}" \
-            "${{ github.event.pull_request.commits_url }}")
-          commit_messages=$(echo "$commits" | jq -r '.[].commit.message')
-          echo "$commit_messages"
+          git diff --name-only ${{ github.event.before }} ${{ github.event.after }}
