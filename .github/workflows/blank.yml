@@ -24,4 +24,8 @@ jobs:
 
       - name: Fetch commit messages
         run: |
-          git log --pretty=format:"%s" ${{ github.event.before }}..${{ github.event.after }}
+          commit_messages=$(git log --pretty=format:"%s" ${{ github.event.before }}..${{ github.event.after }})
+          IFS=$'\n' # set delimiter
+          for msg in $commit_messages; do
+            echo "$msg"
+          done
