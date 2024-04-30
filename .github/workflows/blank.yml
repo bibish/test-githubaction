@@ -22,4 +22,4 @@ jobs:
 
       - name: Fetch commit messages
         run: |
-          git diff --name-only ${{ github.event.before }} ${{ github.event.after }}
+          git log --pretty=format:"%s" ${{ github.event.before }}..${{ github.event.after }}
